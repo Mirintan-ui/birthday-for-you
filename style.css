@@ -62,6 +62,7 @@ body {
     display: flex;
     justify-content: center;
     margin-top: 3px;
+    gap: 3px;
   }
 }
 
