@@ -235,14 +235,19 @@ body {
   inset: 0;
   background: rgba(255, 182, 213, 0.6);
   backdrop-filter: blur(4px);
+
   display: flex;
   justify-content: center;
   align-items: center;
+
+  padding: 16px; /* กันขอบจอมือถือ */
+
   opacity: 0;
   pointer-events: none;
   transition: .4s ease;
   z-index: 999;
 }
+
 
 /* กล่อง popup */
 .popup-box {
