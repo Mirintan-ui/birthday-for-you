@@ -48,9 +48,24 @@ body {
 .banner {
   display: flex;
   justify-content: center;
-  flex-wrap: nowrap;
-  margin-bottom: 25px;
+  flex-wrap: wrap;
+  gap: 6px;
 }
+
+.day {
+  display: contents; /* รวม DAY กับบรรทัดเดียวบนจอใหญ่ */
+}
+
+@media (max-width: 480px) {
+  .day {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 8px;
+  }
+}
+
+
 
 .flag {
   background: #fff;
@@ -274,3 +289,4 @@ body {
 #popup-toggle:checked ~ .popup .popup-box {
   transform: scale(1);
 }
+
