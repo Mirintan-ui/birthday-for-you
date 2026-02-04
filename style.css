@@ -1,0 +1,276 @@
+* {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(#ffd6e8, #ffeef5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.scene {
+  width: 100%;
+  max-width: 480px;
+  text-align: center;
+  padding: 20px;
+}
+
+/* ===== LIGHTS ===== */
+.lights {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 10px;
+}
+
+.lights span {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #ff9ecb;
+  animation: blink 1.2s infinite alternate;
+}
+
+.lights span:nth-child(2) { animation-delay: .2s; }
+.lights span:nth-child(3) { animation-delay: .4s; }
+.lights span:nth-child(4) { animation-delay: .6s; }
+.lights span:nth-child(5) { animation-delay: .8s; }
+
+@keyframes blink {
+  from { opacity: .4; }
+  to { opacity: 1; box-shadow: 0 0 12px #ff9ecb; }
+}
+
+/* ===== BANNER ===== */
+.banner {
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+  margin-bottom: 25px;
+}
+
+.flag {
+  background: #fff;
+  color: #ff4d94;
+  font-weight: bold;
+  margin: 4px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0,0,0,.15);
+  animation: sway 2s ease-in-out infinite;
+}
+
+.flag:nth-child(even) {
+  animation-delay: .3s;
+}
+
+@keyframes sway {
+  0% { transform: rotate(0deg); }
+  50% { transform: rotate(3deg); }
+  100% { transform: rotate(0deg); }
+}
+
+/* ===== BALLOONS ===== */
+.balloons {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 40px;
+}
+
+.balloon {
+  width: 42px;
+  height: 58px;
+  background: radial-gradient(circle at 30% 30%, #fff, #ff9ecb);
+  border-radius: 50%;
+  color: #ff4d94;
+  font-weight: bold;
+  line-height: 58px;
+  animation: float 3s ease-in-out infinite;
+  box-shadow: 0 6px 12px rgba(0,0,0,.2);
+}
+
+.b1 { animation-delay: 0s; }
+.b2 { animation-delay: .4s; }
+.b3 { animation-delay: .8s; }
+.b4 { animation-delay: 1.2s; }
+.b5 { animation-delay: 1.6s; }
+
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-18px); }
+  100% { transform: translateY(0); }
+}
+
+/* ===== CAKE ===== */
+.cake {
+  position: relative;
+  width: 220px;
+  margin: 0 auto 20px;
+  animation: cake-bounce 3s ease-in-out infinite;
+}
+
+@keyframes cake-bounce {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+/* candle */
+.candle {
+  position: absolute;
+  top: -45px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 45px;
+  background: repeating-linear-gradient(
+    to bottom,
+    #fff,
+    #fff 6px,
+    #ffb6d5 6px,
+    #ffb6d5 12px
+  );
+  border-radius: 5px;
+}
+
+.flame {
+  position: absolute;
+  top: -18px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 14px;
+  height: 18px;
+  background: radial-gradient(circle at 30% 30%, #fff6b0, #ff9f1c);
+  border-radius: 50%;
+  animation: flicker .5s infinite alternate;
+}
+
+@keyframes flicker {
+  from { transform: translateX(-50%) scale(1); }
+  to { transform: translateX(-50%) scale(1.25); }
+}
+
+/* icing */
+.icing {
+  width: 180px;
+  height: 30px;
+  background: #fff;
+  border-radius: 20px;
+  margin: 0 auto;
+}
+
+.icing span {
+  position: absolute;
+  bottom: -12px;
+  width: 14px;
+  height: 18px;
+  background: #fff;
+  border-radius: 0 0 10px 10px;
+}
+
+.icing span:nth-child(1) { left: 20px; }
+.icing span:nth-child(2) { left: 80px; }
+.icing span:nth-child(3) { left: 140px; }
+
+/* layers */
+.layer {
+  margin: 0 auto;
+  box-shadow: inset 0 -6px rgba(0,0,0,.15);
+}
+
+.l1 { width: 180px; height: 40px; background: #ffb6d5; }
+.l2 { width: 200px; height: 45px; background: #ff9ecb; }
+.l3 { width: 220px; height: 50px; background: #ff7ab8; }
+
+.plate {
+  width: 240px;
+  height: 16px;
+  background: #fff;
+  border-radius: 50%;
+  margin: 10px auto 0;
+  box-shadow: 0 6px 12px rgba(0,0,0,.2);
+}
+
+/* text */
+.text {
+  font-size: 18px;
+  color: #ff4d94;
+}
+
+.text span {
+  font-size: 14px;
+  color: #ff7ab8;
+}
+
+/* ===== POPUP TOGGLE ===== */
+#popup-toggle {
+  display: none;
+}
+
+/* พื้นหลัง popup */
+.popup {
+  position: fixed;
+  inset: 0;
+  background: rgba(255, 182, 213, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: .4s ease;
+  z-index: 999;
+}
+
+/* กล่อง popup */
+.popup-box {
+  background: #fff;
+  padding: 30px 25px;
+  width: 85%;
+  max-width: 320px;
+  border-radius: 25px;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(255,105,180,.4);
+  transform: scale(.7);
+  transition: .4s ease;
+}
+
+.popup-box h1 {
+  color: #ff4d94;
+  margin-bottom: 12px;
+  white-space: nowrap;
+  font-size: clamp(22px, 6vw, 28px);
+  
+}
+
+
+
+.popup-box p {
+  color: #ff7ab8;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* ปุ่มปิด */
+.close-btn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 22px;
+  background: linear-gradient(#ff9ecb, #ff7ab8);
+  color: #fff;
+  border-radius: 20px;
+  cursor: pointer;
+  box-shadow: 0 6px 12px rgba(0,0,0,.2);
+}
+
+/* แสดง popup เมื่อกดเค้ก */
+#popup-toggle:checked ~ .popup {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#popup-toggle:checked ~ .popup .popup-box {
+  transform: scale(1);
+}
