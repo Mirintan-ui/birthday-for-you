@@ -62,7 +62,7 @@ body {
     display: flex;
     justify-content: center;
     margin-top: 3px;
-    gap: 3px;
+    gap: 2px;
   }
 }
 
@@ -295,3 +295,102 @@ body {
   transform: scale(1);
 }
 
+/* ===== EFFECTS LAYER ===== */
+.effects {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 997; /* ต่ำกว่า popup */
+  opacity: 0;
+  overflow: hidden;
+}
+
+/* แต่ละชิ้น */
+.effects span {
+  position: absolute;
+  font-size: 22px;
+  animation: floatAndFall 6s linear infinite;
+  opacity: 0;
+}
+
+/* กระจายตำแหน่ง + ดีเลย์ */
+.effects span:nth-child(1) { left: 10%; animation-delay: 0s; }
+.effects span:nth-child(2) { left: 25%; animation-delay: 1s; }
+.effects span:nth-child(3) { left: 40%; animation-delay: 2s; }
+.effects span:nth-child(4) { left: 55%; animation-delay: 3s; }
+.effects span:nth-child(5) { left: 70%; animation-delay: 4s; }
+.effects span:nth-child(6) { left: 85%; animation-delay: 5s; }
+
+@keyframes floatAndFall {
+  0% {
+    top: 110%;
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    top: -20%;
+    transform: scale(1.3);
+    opacity: 0;
+  }
+}
+
+/* แสดงเฉพาะตอน popup เปิด */
+#popup-toggle:checked ~ .effects {
+  opacity: 1;
+}
+
+/* ===== POPUP WRAP ===== */
+.popup-wrap {
+  position: relative;
+  width: 100%;
+  max-width: 360px;
+}
+
+/* ===== EFFECTS รอบ popup ===== */
+.popup-effects {
+  position: absolute;
+  inset: -40px; /* ระยะรอบ popup */
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.popup-effects span {
+  position: absolute;
+  font-size: 20px;
+  opacity: 0;
+  animation: popupFloat 5s linear infinite;
+}
+
+/* กระจายตำแหน่ง */
+.popup-effects span:nth-child(1) { left: 10%; animation-delay: 0s; }
+.popup-effects span:nth-child(2) { left: 30%; animation-delay: 1s; }
+.popup-effects span:nth-child(3) { left: 50%; animation-delay: 2s; }
+.popup-effects span:nth-child(4) { left: 70%; animation-delay: 3s; }
+.popup-effects span:nth-child(5) { left: 85%; animation-delay: 4s; }
+.popup-effects span:nth-child(6) { left: 95%; animation-delay: 5s; }
+
+@keyframes popupFloat {
+  0% {
+    top: 110%;
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    top: -20%;
+    transform: scale(1.3);
+    opacity: 0;
+  }
+}
+
+/* ให้ popup-box อยู่เหนือเอฟเฟกต์ */
+.popup-box {
+  position: relative;
+  z-index: 1;
+}
